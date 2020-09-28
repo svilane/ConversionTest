@@ -3,10 +3,9 @@ package com.playsafe.conversion.controller;
 
 import com.playsafe.conversion.service.ConversionTestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -18,25 +17,27 @@ public class ConversionTestController {
 	@Autowired
 	private ConversionTestService conversionService;
 
-	@GetMapping("/conversions/ktoc")
-	public BigDecimal getKelvinToCelcius() {
-		return new BigDecimal(10);
+	@GetMapping("/conversions/ktoc/{unit}")
+	public ResponseEntity<Double>  getKelvinToCelcius(@PathVariable(value = "unit") Double kelvin) {
+		double ktoc = conversionService.getKelvinToCelcius(kelvin);
+		return new ResponseEntity<Double>(HttpStatus.OK);
 	}
 
-	@GetMapping("/conversions/ctok")
-		public BigDecimal getCelciusToKelvin() {
-			return new BigDecimal(10);
+	@GetMapping("/conversions/ctok/{unit}")
+		public ResponseEntity<Double>  getCelciusToKelvin(@PathVariable(value = "unit") Double celcius) {
+		double ctok = conversionService.getCelciusToKelvin (celcius);
+		return new ResponseEntity<Double>(HttpStatus.OK);
 	}
 
-	@GetMapping("/conversions/mtok")
-	public BigDecimal getMilesToKm() {
-		return new BigDecimal(10);
+	@GetMapping("/conversions/mtok/{unit}")
+	public ResponseEntity<Double>  getMilesToKm(@PathVariable(value = "unit") Float miles) {
+		double mtok = conversionService.getKmToMiles(miles);
+		return new ResponseEntity<Double>(HttpStatus.OK);
 	}
 
-	@GetMapping("/conversions/ktom")
-	public BigDecimal getKmToMiles() {
-		return new BigDecimal(10);
+	@GetMapping("/conversions/ktom/{unit}")
+	public ResponseEntity<Double>  getKmToMiles(@PathVariable(value = "unit") Float km) {
+		double ktom = conversionService.getKmToMiles(km);
+		return new ResponseEntity<Double>(HttpStatus.OK);
 	}
-
-
 }
