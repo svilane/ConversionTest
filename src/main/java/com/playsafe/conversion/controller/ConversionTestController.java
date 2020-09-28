@@ -20,24 +20,24 @@ public class ConversionTestController {
 	@GetMapping("/conversions/ktoc/{unit}")
 	public ResponseEntity<Double>  getKelvinToCelcius(@PathVariable(value = "unit") Double kelvin) {
 		double ktoc = conversionService.getKelvinToCelcius(kelvin);
-		return new ResponseEntity<Double>(HttpStatus.OK);
+		return new ResponseEntity<Double>(ktoc, HttpStatus.OK);
 	}
 
 	@GetMapping("/conversions/ctok/{unit}")
 		public ResponseEntity<Double>  getCelciusToKelvin(@PathVariable(value = "unit") Double celcius) {
 		double ctok = conversionService.getCelciusToKelvin (celcius);
-		return new ResponseEntity<Double>(HttpStatus.OK);
+		return new ResponseEntity<Double>(ctok,HttpStatus.OK);
 	}
 
 	@GetMapping("/conversions/mtok/{unit}")
 	public ResponseEntity<Double>  getMilesToKm(@PathVariable(value = "unit") Float miles) {
 		double mtok = conversionService.getKmToMiles(miles);
-		return new ResponseEntity<Double>(HttpStatus.OK);
+		return new ResponseEntity<Double>(mtok,HttpStatus.OK);
 	}
 
 	@GetMapping("/conversions/ktom/{unit}")
 	public ResponseEntity<Double>  getKmToMiles(@PathVariable(value = "unit") Float km) {
 		double ktom = conversionService.getKmToMiles(km);
-		return new ResponseEntity<Double>(HttpStatus.OK);
+		return new ResponseEntity<Double>(ktom,HttpStatus.OK);
 	}
 }

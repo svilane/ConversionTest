@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Service
 public class ConversionTestService {
 
-
     public double getKelvinToCelcius(double kelvin) {
         return kelvin - 273;
     }
@@ -24,5 +23,4 @@ public class ConversionTestService {
     public double getKmToMiles(double km) {
         return  km / 1.161;
     }
-
 }
