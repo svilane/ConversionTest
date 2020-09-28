@@ -18,13 +18,25 @@ public class ConversionTestController {
 	@Autowired
 	private ConversionTestService conversionService;
 
-	@GetMapping("/e")
+	@GetMapping("/conversions/ktoc")
 	public BigDecimal getKelvinToCelcius() {
 		return new BigDecimal(10);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/conversions/ctok")
 		public BigDecimal getCelciusToKelvin() {
 			return new BigDecimal(10);
 	}
+
+	@GetMapping("/conversions/mtok")
+	public BigDecimal getMilesToKm() {
+		return new BigDecimal(10);
+	}
+
+	@GetMapping("/conversions/ktom")
+	public BigDecimal getKmToMiles() {
+		return new BigDecimal(10);
+	}
+
+
 }
